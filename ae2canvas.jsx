@@ -42,7 +42,7 @@
 	function rgbToHex( rgb ){
 		var hex = '#',i;
 		for( i=0; i<rgb.length; i++ ){
-			hex += (rgb[i]*255).toString(16);
+			hex += String( "00" + (rgb[i]*255).toString(16) ).slice(-2);
 		}
 		return hex;
 	}

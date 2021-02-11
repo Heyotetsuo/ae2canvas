@@ -59,14 +59,14 @@ function renderLayer( layer, s, o, C ){
 		for( q in shape ){
 			if ( !q.match(/stroke|fill/) ){
 				addShape( shape[q], s, o, C );
+				C.lineJoin = "round";
+				C.fillStyle = shape.fill;
+				if ( shape.stroke ){
+					C.lineWidth = shape.stroke.w;
+					C.strokeStyle = shape.stroke.style;
+				C.fill();
+				C.stroke();
 			}
 		}
-		C.lineJoin = "round";
-		C.fillStyle = shape.fill;
-		if ( shape.stroke ){
-			C.lineWidth = shape.stroke.w;
-			C.strokeStyle = shape.stroke.style;
-		C.fill();
-		C.stroke();
 	}
 }

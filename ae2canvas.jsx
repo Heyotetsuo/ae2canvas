@@ -62,7 +62,7 @@
 	}
 	function main(){
 		if ( init() === 1 ) return;
-		for( i=1; i<=shapes.numProperties; i++ ){
+		for( i=shapes.numProperties; i>0; i-- ){
 			sName = shapes(i).name;
 			data[sName] = {};
 			for( j=1; j<=shapes(i).Contents.numProperties; j++ ){

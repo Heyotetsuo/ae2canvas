@@ -14,7 +14,7 @@ function addShape(shape, s, o, C){
 	var os = shape.outs || null;
 
 	// get offset versions of x and y
-	var x = SZ/2+(o?o[0]:0), y = SZ/2+(o?o[1]:0);
+	var x = (o?o[0]:0), y = (o?o[1]:0);
 
 	// these will store the calculated vertices and tangents
 	var ax, ay, bx, by, cx, cy;

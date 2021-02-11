@@ -53,14 +53,20 @@ function renderLayer( layer, s, o, C ){
 // s: size: where `1` is 100% scale eg. [1.5,-0.34]
 // o: optional position: where [0,0] is center (eg. `[-200,36.9]`)
 // C: target canvas context
-	var shape,path,p;
+	var shape,path,p,q;
 	for( p in layer ){
 		shape = layer[p];
-		addShape( shape, s, o, C );
-		C.fillStyle = shape.fillStyle;
+		for( q in shape ){
+			if ( !q.match(/stroke|fill/) ){
+				addShape( shape[q], s, o, C );
+			}
+		}
+		C.lineJoin = "round";
+		C.fillStyle = shape.fill;
+		if ( shape.stroke ){
+			C.lineWidth = shape.stroke.w;
+			C.strokeStyle = shape.stroke.style;
 		C.fill();
-		C.lineWidth = shape.lineWidth;
-		C.strokeStyle = shape.strokeStyle;
 		C.stroke();
 	}
 }
